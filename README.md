@@ -11,6 +11,12 @@ npm run dev
 
 Open `http://localhost:3000`.
 
+To activate the WhatsApp CTA, add the business number in international format without `+` or spaces:
+
+```bash
+NEXT_PUBLIC_WHATSAPP_NUMBER=919876543210
+```
+
 ## Production export
 
 ```bash
@@ -28,4 +34,4 @@ docker run --rm -p 8080:80 sydy-capital
 
 Open `http://localhost:8080`.
 
-All investment figures and calculator outputs are illustrative; this build contains no login, data provider or lead-submission integration.
+All investment figures and calculator outputs are illustrative. The contact form is intentionally client-side only until an approved CRM or email provider is connected.

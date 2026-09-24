@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 64" role="img" aria-labelledby="title">
+  <title>BSE</title>
+  <rect width="96" height="64" rx="12" fill="#fff"/>
+  <path d="M16 43 31 18h12L28 43H16Z" fill="#ed1c24"/>
+  <path d="m33 43 15-25h12L45 43H33Z" fill="#f58220"/>
+  <path d="m50 43 15-25h12L62 43H50Z" fill="#fdb913"/>
+  <text x="73" y="43" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#282828">BSE</text>
+</svg>
