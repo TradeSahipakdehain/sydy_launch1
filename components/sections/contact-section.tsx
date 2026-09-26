@@ -4,9 +4,15 @@ import { FormEvent, useMemo, useState } from "react";
 import { ArrowUpRight, CheckCircle2, Clock3, Mail, MessageCircle, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import Link from "next/link";
+
+const enquiryAddress = "ashish05beit@gmail.com";
+
+type EnquiryStatus = "idle" | "sending" | "sent" | "activation" | "error";
 
 export function ContactSection() {
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<EnquiryStatus>("idle");
+  const [emailDraft, setEmailDraft] = useState(`mailto:${enquiryAddress}`);
   const whatsappNumber = (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "919066868949").replace(/\D/g, "");
   const whatsappHref = useMemo(() => {
     if (!whatsappNumber) return null;
@@ -14,9 +20,38 @@ export function ContactSection() {
     return `https://wa.me/${whatsappNumber}?text=${message}`;
   }, [whatsappNumber]);
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setSubmitted(true);
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    const name = String(data.get("name") || "").trim();
+    const email = String(data.get("email") || "").trim();
+    const phone = String(data.get("phone") || "").trim();
+    const message = String(data.get("message") || "").trim();
+    const subject = `SYDY Capital enquiry from ${name}`;
+    const body = `Name: ${name}\nEmail: ${email}\nPhone: ${phone || "Not provided"}\n\nMessage:\n${message}`;
+    setEmailDraft(`mailto:${enquiryAddress}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`);
+    setStatus("sending");
+
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${enquiryAddress}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({ name, email, phone, message, _subject: subject, _honey: String(data.get("website") || "") }),
+      });
+      const result = await response.json();
+      if (!response.ok || result.success !== true && result.success !== "true") {
+        if (typeof result.message === "string" && /activation/i.test(result.message)) {
+          setStatus("activation");
+          return;
+        }
+        throw new Error("Email service rejected the enquiry");
+      }
+      setStatus("sent");
+      form.reset();
+    } catch {
+      setStatus("error");
+    }
   }
 
   return (
@@ -29,7 +64,7 @@ export function ContactSection() {
             Let’s talk about<br />your <span className="text-[#d6fe51]">wealth.</span>
           </h2>
           <p className="mt-7 max-w-md text-base leading-7 text-[#868f97]">
-            Whether you are building your first serious portfolio, managing an established one or planning for the next generation, start with a conversation.
+            Whether you are starting your first SIP or planning for retirement, education or another goal, begin with a simple conversation.
           </p>
           <div className="mt-10 grid gap-3">
             <div className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/[.025] p-4">
@@ -71,6 +106,7 @@ export function ContactSection() {
             <Mail className="size-5 text-[#868f97]" />
           </div>
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
+            <div className="hidden" aria-hidden="true"><label htmlFor="enquiry-website">Leave this field empty</label><input id="enquiry-website" name="website" type="text" tabIndex={-1} autoComplete="off" /></div>
             <label className="grid gap-2 text-xs text-[#cccccc]">Name<Input name="name" placeholder="Your name" required /></label>
             <label className="grid gap-2 text-xs text-[#cccccc]">Email<Input name="email" type="email" placeholder="name@company.com" required /></label>
             <label className="grid gap-2 text-xs text-[#cccccc] sm:col-span-2">Phone<Input name="phone" type="tel" placeholder="+91" /></label>
@@ -79,13 +115,21 @@ export function ContactSection() {
               <textarea name="message" rows={5} required placeholder="Tell us about your goals, current portfolio or questions." className="rounded-xl border border-white/15 bg-[#0b0b0b] px-4 py-3 text-sm text-white outline-none transition placeholder:text-[#555f68] focus:border-[#479ffa] focus:ring-2 focus:ring-[#479ffa]/30" />
             </label>
           </div>
-          <Button type="submit" className="mt-5 w-full">Send enquiry <ArrowUpRight size={16} /></Button>
-          {submitted ? (
+          <Button type="submit" disabled={status === "sending"} className="mt-5 w-full">{status === "sending" ? "Sending…" : "Send enquiry"} <ArrowUpRight size={16} /></Button>
+          {status === "sent" ? (
             <div role="status" className="mt-4 flex items-start gap-2 rounded-xl border border-[#4ebe96]/20 bg-[#4ebe96]/10 p-3 text-xs leading-5 text-[#b8f1db]">
-              <CheckCircle2 className="mt-0.5 size-4 shrink-0" /> This demo does not transmit data yet. Connect the approved CRM or email service before launch.
+              <CheckCircle2 className="mt-0.5 size-4 shrink-0" /> Your enquiry was accepted by the email service. We will reply as soon as possible.
+            </div>
+          ) : status === "activation" ? (
+            <div role="alert" className="mt-4 rounded-xl border border-[#ffa16c]/30 bg-[#ffa16c]/10 p-3 text-xs leading-5 text-[#f5c2a3]">
+              Email delivery is being activated. <a href={emailDraft} className="font-semibold underline underline-offset-2">Open a prefilled email</a> or use WhatsApp for now.
+            </div>
+          ) : status === "error" ? (
+            <div role="alert" className="mt-4 rounded-xl border border-[#ffa16c]/30 bg-[#ffa16c]/10 p-3 text-xs leading-5 text-[#f5c2a3]">
+              The email service could not accept this enquiry. <a href={emailDraft} className="font-semibold underline underline-offset-2">Open a prefilled email instead</a>.
             </div>
           ) : (
-            <p className="mt-4 text-center text-[10px] leading-4 text-[#868f97]">No information is currently stored or transmitted by this demo.</p>
+            <p className="mt-4 text-center text-[10px] leading-4 text-[#868f97]">Your enquiry is sent through our email form provider to {enquiryAddress}. <Link href="/privacy" className="underline underline-offset-2">Privacy details</Link></p>
           )}
         </form>
       </div>

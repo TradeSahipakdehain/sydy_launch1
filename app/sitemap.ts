@@ -8,6 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: root, lastModified: new Date() },
     { url: `${root}/blog`, lastModified: new Date() },
+    { url: `${root}/algo`, lastModified: new Date() },
     { url: `${root}/disclosures`, lastModified: new Date() },
     { url: `${root}/privacy`, lastModified: new Date() },
     { url: `${root}/terms`, lastModified: new Date() },

@@ -18,9 +18,7 @@ import {
   ShieldCheck,
   Sparkles,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Slider } from "@/components/ui/slider";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
@@ -32,41 +30,46 @@ import {
 import { ContentExpansion } from "@/components/sections/content-expansion";
 import { ContactSection } from "@/components/sections/contact-section";
 import { TrustBar } from "@/components/sections/trust-bar";
+import { InvestorEssentials } from "@/components/sections/investor-essentials";
 import { SiteFooter } from "@/components/site-footer";
 import Link from "next/link";
 
 const products = [
   {
     number: "01",
-    title: "Mutual funds & equity",
-    copy: "Diversified and research-led participation in long-term economic growth.",
-    role: "Growth & diversification",
+    title: "Mutual funds",
+    copy: "Invest through SIP or lumpsum across equity, debt, hybrid and index funds.",
+    role: "Long-term goals",
     instruments: ["Equity", "Hybrid", "Debt", "Multi-asset", "SIP · STP · SWP"],
-    href: "#mutual-funds",
+    href: "#mutual-fund-journey",
+    action: "Learn about mutual funds",
   },
   {
     number: "02",
-    title: "Bonds & fixed income",
-    copy: "Capital preservation, income generation and portfolio stability.",
-    role: "Income & resilience",
+    title: "Deposits & bonds",
+    copy: "Explore fixed deposits and bonds for income and greater stability.",
+    role: "Income & stability",
     instruments: ["Corporate bonds", "Government securities", "Fixed deposits", "Duration strategy"],
-    href: "#fixed-income",
+    href: "#contact",
+    action: "Ask about these options",
   },
   {
     number: "03",
-    title: "PMS, AIF & alternatives",
-    copy: "Specialist strategies for eligible investors seeking greater customization.",
-    role: "Specialist allocation",
+    title: "PMS & AIF",
+    copy: "Specialist investment options for eligible investors with larger portfolios.",
+    role: "Advanced investing",
     instruments: ["PMS", "AIF", "SIF", "Structured opportunities"],
-    href: "#alternatives",
+    href: "#contact",
+    action: "Ask about eligibility",
   },
   {
     number: "04",
-    title: "Systematic strategies",
-    copy: "Rules-based Indian-market models with transparent risk and performance context.",
-    role: "Tactical & systematic",
+    title: "Algo strategies",
+    copy: "Optional rules-based strategies with clear risk controls and disclosures.",
+    role: "Optional strategies",
     instruments: ["Trend", "Mean reversion", "Quality momentum", "Algo execution"],
-    href: "#strategies",
+    href: "/algo",
+    action: "Explore algo strategies",
   },
 ];
 
@@ -128,7 +131,7 @@ function CapitalHero() {
         <div className="noise pointer-events-none absolute inset-0 opacity-[.12]" />
         <div className="absolute left-[8%] top-28 z-10">
           <p className="text-[10px] font-medium tracking-[.18em] text-[#479ffa]">
-            SYDY CAPITAL / INTELLIGENCE SYSTEM
+            SYDY CAPITAL / MUTUAL FUNDS & WEALTH PLANNING
           </p>
         </div>
         <motion.div
@@ -161,13 +164,12 @@ function CapitalHero() {
             id="hero-title"
             className="text-balance text-[clamp(3.7rem,10vw,9rem)] font-semibold leading-[.82] tracking-[-.1em] text-white"
           >
-            Capital, made
+            Invest for life’s
             <br />
-            <span className="text-[#ffa16c]">intelligible.</span>
+            <span className="text-[#ffa16c]">important goals.</span>
           </h1>
           <p className="mx-auto mt-8 max-w-md text-pretty text-base leading-7 text-[#868f97]">
-            A dynamic view of your capital—where data, strategy and execution
-            meet in one calm operating system.
+            Simple mutual fund solutions, practical planning and personal guidance for every stage of life.
           </p>
         </motion.div>
         <motion.div
@@ -191,10 +193,10 @@ function CommandSurface() {
       <div className="flex items-center justify-between border-b border-white/10 px-5 py-3">
         <div className="flex items-center gap-2 text-xs text-[#cccccc]">
           <span className="size-2 rounded-full bg-[#4ebe96] shadow-[0_0_12px_#4ebe96]" />
-          SYDY OS / LIVE DEMO
+          YOUR INVESTMENT SNAPSHOT
         </div>
         <span className="text-[10px] tracking-[.14em] text-[#868f97]">
-          INDIA · EQUITY · FIXED INCOME
+          SIMPLE · GOAL-BASED · PERSONAL
         </span>
       </div>
       <div className="grid gap-4 p-5 md:grid-cols-[1.35fr_.65fr]">
@@ -202,14 +204,14 @@ function CommandSurface() {
           <div className="mb-4 flex items-end justify-between">
             <div>
               <p className="text-[10px] tracking-[.15em] text-[#868f97]">
-                CAPITAL MOMENTUM
+                ESTIMATED PORTFOLIO VALUE
               </p>
               <p className="mt-1 text-3xl font-semibold tracking-[-.08em]">
                 ₹ 24.68L
               </p>
             </div>
             <p className="text-sm text-[#4ebe96]">
-              +18.6% <span className="text-[#868f97]">all time</span>
+              +18.6% <span className="text-[#868f97]">illustrative</span>
             </p>
           </div>
           <svg
@@ -243,11 +245,11 @@ function CommandSurface() {
           </svg>
         </div>
         <div className="grid grid-cols-2 gap-3">
-          <Metric label="RISK SCORE" value="6.2/10" detail="Balanced profile" />
+          <Metric label="RISK LEVEL" value="Moderate" detail="Example profile" />
           <Metric
-            label="ALPHA SIGNAL"
-            value="+4.84%"
-            detail="Illustrative"
+            label="PLAN STATUS"
+            value="On track"
+            detail="Example only"
             positive
           />
           <div className="col-span-2 rounded-xl border border-white/10 bg-white/[.03] p-3">
@@ -437,22 +439,28 @@ export default function Home() {
           SYDY <span className="font-normal text-[#868f97]">CAPITAL</span>
         </Link>
         <nav className="hidden items-center gap-6 text-xs text-[#868f97] md:flex">
-          <a href="#solutions" className="hover:text-white">
-            Solutions
+          <a href="#goals" className="hover:text-white">
+            Goals
           </a>
-          <a href="#approach" className="hover:text-white">
-            Approach
+          <a href="#calculators" className="hover:text-white">
+            Calculators
           </a>
-          <a href="#strategies" className="hover:text-white">
-            Strategies
+          <a href="#learn" className="hover:text-white">
+            Learn
           </a>
+          <Link href="/algo" className="hover:text-white">
+            Algo
+          </Link>
           <Link href="/blog" className="hover:text-white">
-            Insights
+            Blogs
           </Link>
         </nav>
-        <a href="#contact" className="inline-flex h-9 items-center justify-center gap-2 rounded-full border border-white/20 bg-transparent px-4 text-xs font-semibold text-white transition hover:border-white/60 hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#479ffa]">
-          Contact <ArrowUpRight size={14} />
-        </a>
+        <div className="flex items-center gap-2">
+          <Link href="/algo" className="inline-flex h-9 items-center justify-center rounded-full border border-white/20 px-4 text-xs font-semibold text-white transition hover:border-[#4ebe96]/60 hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#479ffa] md:hidden">Algo</Link>
+          <a href="#contact" className="inline-flex h-9 items-center justify-center gap-2 rounded-full border border-white/20 bg-transparent px-4 text-xs font-semibold text-white transition hover:border-white/60 hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#479ffa]">
+            Contact <ArrowUpRight size={14} />
+          </a>
+        </div>
       </header>
       <CapitalHero />
       <TrustBar />
@@ -464,17 +472,16 @@ export default function Home() {
           <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
             <div>
               <p className="text-[10px] tracking-[.18em] text-[#479ffa]">
-                01 / THE CAPITAL STACK
+                INVESTMENT OPTIONS
               </p>
               <h2 className="mt-4 text-5xl font-semibold leading-[.9] tracking-[-.09em] md:text-7xl">
-                A sharper architecture
+                Simple ways to invest
                 <br />
-                for every allocation.
+                for every goal.
               </h2>
             </div>
             <p className="max-w-xs text-sm leading-6 text-[#868f97]">
-              Institutional vocabulary, translated into a direct, navigable set
-              of investment choices.
+              Understand the main choices without complicated language.
             </p>
           </div>
           <div className="mt-16 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 md:grid-cols-4">
@@ -491,7 +498,7 @@ export default function Home() {
                       index === 3 ? "text-[#4ebe96]" : "text-[#479ffa]"
                     }
                   >
-                    VIEW DATA
+                    EXPLORE
                   </span>
                 </div>
                 <div className="mt-14">
@@ -505,7 +512,7 @@ export default function Home() {
                 </div>
                 <div className="mt-6 border-t border-white/10 pt-4">
                   <p className="text-[9px] tracking-[.14em] text-[#868f97]">
-                    PORTFOLIO ROLE
+                    USEFUL FOR
                   </p>
                   <p className="mt-1 text-sm font-medium text-[#cccccc]">
                     {product.role}
@@ -522,7 +529,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="mt-auto flex items-center justify-between pt-6 text-xs text-[#cccccc]">
-                  <span>Explore allocation data</span>
+                  <span>{product.action}</span>
                   <ChevronRight className="size-5 text-[#868f97] transition group-hover:translate-x-1 group-hover:text-white" />
                 </div>
               </Link>
@@ -530,9 +537,9 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <InvestmentLab />
+      <InvestorEssentials />
       <ContentExpansion />
-      <section className="section-rule bg-[#131313] px-6 py-24 md:py-32">
+      <section className="hidden section-rule bg-[#131313] px-6 py-24 md:py-32">
         <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[.8fr_1.2fr]">
           <div>
             <p className="text-[10px] tracking-[.18em] text-[#479ffa]">
@@ -601,32 +608,16 @@ export default function Home() {
             THE NEXT MOVE IS YOURS
           </p>
           <h2 className="mt-5 text-6xl font-semibold leading-[.86] tracking-[-.1em] md:text-8xl">
-            Make capital
+            Start investing
             <br />
-            more <span className="text-[#d6fe51]">legible.</span>
+            for your <span className="text-[#d6fe51]">goals.</span>
           </h2>
           <p className="mx-auto mt-7 max-w-md text-base leading-7 text-[#868f97]">
-            See how a calmer operating system changes the way you meet
-            complexity.
+            Begin with a clear goal, an affordable amount and a plan you can understand.
           </p>
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button className="mt-8">
-                Start the demo <ArrowUpRight size={16} />
-              </Button>
-            </DialogTrigger>
-            <DialogContent>
-              <p className="text-[10px] tracking-[.18em] text-[#479ffa]">
-                SYDY CAPITAL / DEMO ACCESS
-              </p>
-              <h2 className="mt-3 text-3xl font-semibold tracking-[-.07em]">
-                A clearer operating view.
-              </h2>
-              <p className="mt-3 text-sm leading-6 text-[#868f97]">
-                This is a non-production form. No data is stored or submitted.
-              </p>
-            </DialogContent>
-          </Dialog>
+          <a href="#contact" className="mt-8 inline-flex h-11 items-center justify-center gap-2 rounded-full border border-white/30 bg-white px-5 text-sm font-semibold text-[#0b0b0b] transition hover:bg-[#e6e6e6] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#479ffa]">
+            Start planning <ArrowUpRight size={16} />
+          </a>
         </div>
       </section>
       <SiteFooter />

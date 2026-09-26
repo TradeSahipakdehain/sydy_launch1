@@ -34,4 +34,4 @@ docker run --rm -p 8080:80 sydy-capital
 
 Open `http://localhost:8080`.
 
-All investment figures and calculator outputs are illustrative. The contact form is intentionally client-side only until an approved CRM or email provider is connected.
+All investment figures and calculator outputs are illustrative. The contact form sends enquiries through FormSubmit to ashish05beit@gmail.com and offers a prefilled email draft if delivery fails. FormSubmit requires the mailbox owner to activate the address using its first-use verification email before enquiries are delivered; see https://formsubmit.co/help. Test delivery with the owner before launch.

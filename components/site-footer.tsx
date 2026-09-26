@@ -5,19 +5,19 @@ const footerGroups = [
   {
     title: "Explore",
     links: [
-      ["Wealth philosophy", "#wealth"],
-      ["SYDY approach", "#approach"],
-      ["Systematic strategies", "#strategies"],
-      ["Market insights", "/blog"],
+      ["Financial goals", "#goals"],
+      ["Investment calculators", "#calculators"],
+      ["Investment guides", "#learn"],
+      ["FAQs", "#faq"],
     ],
   },
   {
     title: "Investments",
     links: [
-      ["Mutual funds & equity", "#mutual-funds"],
-      ["Bonds & fixed income", "#fixed-income"],
-      ["PMS, AIF & alternatives", "#alternatives"],
-      ["Investment calculators", "#command"],
+      ["Mutual funds", "#mutual-fund-journey"],
+      ["Ask about deposits & bonds", "#contact"],
+      ["Ask about PMS & AIF", "#contact"],
+      ["Algo strategies", "/algo"],
     ],
   },
   {
@@ -43,7 +43,7 @@ export function SiteFooter() {
               SYDY <span className="font-normal text-[#868f97]">CAPITAL</span>
             </Link>
             <p className="mt-6 max-w-sm text-2xl leading-8 tracking-[-.045em] text-[#cccccc]">Prosperity through Vision.</p>
-            <p className="mt-4 max-w-sm text-sm leading-6 text-[#868f97]">Investment thinking, research and disciplined portfolio management for individuals, families and businesses.</p>
+            <p className="mt-4 max-w-sm text-sm leading-6 text-[#868f97]">Simple mutual fund investing and goal-based financial planning for individuals and families.</p>
             <div className="mt-5 grid gap-2 text-sm">
               <a href="tel:+919066868949" className="text-[#cccccc] transition hover:text-white">+91 90668 68949</a>
               <a href="mailto:ashish05beit@gmail.com" className="text-[#cccccc] transition hover:text-white">ashish05beit@gmail.com</a>

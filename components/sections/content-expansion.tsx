@@ -19,16 +19,15 @@ import {
 } from "lucide-react";
 
 const leadingAmcs = [
-  { name: "SBI Mutual Fund", code: "SBI", icon: "/brand-icons/sbi-mf.png" },
-  { name: "HDFC Mutual Fund", code: "HDFC", icon: "/brand-icons/hdfc-mf.png" },
-  { name: "ICICI Prudential Mutual Fund", code: "ICICI", icon: "/brand-icons/icici-pru-mf.png" },
-  { name: "Nippon India Mutual Fund", code: "NIPPON", icon: "/brand-icons/nippon-mf.png" },
-  { name: "Kotak Mahindra Mutual Fund", code: "KOTAK", icon: "/brand-icons/kotak-mf.png" },
-  { name: "Aditya Birla Sun Life Mutual Fund", code: "ABSL", icon: "/brand-icons/absl-mf.png" },
-  { name: "UTI Mutual Fund", code: "UTI", icon: "/brand-icons/uti-mf.png" },
-  { name: "Axis Mutual Fund", code: "AXIS", icon: "/brand-icons/axis-mf.png" },
-  { name: "Mirae Asset Mutual Fund", code: "MIRAE", icon: "/brand-icons/mirae-mf.png" },
-  { name: "Motilal Oswal Mutual Fund", code: "MO", icon: "/brand-icons/motilal-mf.png" },
+  { name: "Motilal Oswal Mutual Fund", sheet: "/amc-artwork/amc-row-primary.png", position: 0 },
+  { name: "Mirae Asset Mutual Fund", sheet: "/amc-artwork/amc-row-primary.png", position: 33.333 },
+  { name: "SBI Mutual Fund", sheet: "/amc-artwork/amc-row-primary.png", position: 66.667 },
+  { name: "Aditya Birla Sun Life Mutual Fund", sheet: "/amc-artwork/amc-row-primary.png", position: 100 },
+  { name: "Axis Mutual Fund", sheet: "/amc-artwork/amc-row-axis.png", position: 100 },
+  { name: "Bandhan Mutual Fund", sheet: "/amc-artwork/amc-row-alternates.png", position: 0 },
+  { name: "DSP Mutual Fund", sheet: "/amc-artwork/amc-row-alternates.png", position: 33.333 },
+  { name: "Franklin Templeton Investments", sheet: "/amc-artwork/amc-row-alternates.png", position: 66.667 },
+  { name: "Edelweiss Mutual Fund", sheet: "/amc-artwork/amc-row-alternates.png", position: 100 },
 ];
 
 const pillars = [
@@ -121,7 +120,7 @@ const process = [
   ["Evolve", "Rebalance as markets and life circumstances change."],
 ];
 
-const strategies = [
+export const strategies = [
   {
     name: "NIFTY Trend Composite",
     universe: "NIFTY 100 · Long / Cash",
@@ -179,7 +178,7 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 export function ContentExpansion() {
   return (
     <>
-      <section id="wealth" className="section-rule bg-[#131313] px-6 py-24 md:py-36">
+      <section id="wealth" className="hidden section-rule bg-[#131313] px-6 py-24 md:py-36">
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-10 lg:grid-cols-[.85fr_1.15fr] lg:items-end">
             <div>
@@ -213,7 +212,7 @@ export function ContentExpansion() {
         </div>
       </section>
 
-      <section id="investment-universe" className="section-rule bg-[#0b0b0b] px-6 py-24 md:py-32">
+      <section id="investment-universe" className="hidden section-rule bg-[#0b0b0b] px-6 py-24 md:py-32">
         <div className="mx-auto max-w-6xl">
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <div>
@@ -274,13 +273,13 @@ export function ContentExpansion() {
         <div className="mx-auto max-w-6xl px-6">
           <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
             <div>
-              <SectionLabel>MUTUAL FUND ACCESS</SectionLabel>
+              <SectionLabel>OUR MUTUAL FUND PARTNERS</SectionLabel>
               <h2 className="mt-4 text-3xl font-semibold tracking-[-.07em] md:text-5xl">
-                Associated with leading mutual fund AMCs.
+                Access leading mutual fund companies.
               </h2>
             </div>
             <p className="max-w-md text-xs leading-5 text-[#868f97]">
-              A broad platform universe for research-led selection across investment styles, asset classes and investor goals.
+              Compare suitable schemes across investment styles and goals in one place.
             </p>
           </div>
         </div>
@@ -289,11 +288,19 @@ export function ContentExpansion() {
             {[0, 1].map((set) => (
               <div key={set} className="flex shrink-0 gap-3 pr-3" aria-hidden={set === 1}>
                 {leadingAmcs.map((amc) => (
-                  <div key={`${set}-${amc.code}`} className="flex h-20 w-[270px] shrink-0 items-center gap-4 rounded-xl border border-white/10 bg-white/[.025] px-5 transition hover:border-[#4ebe96]/40 hover:bg-[#4ebe96]/[.04]">
-                    <span className="grid size-12 shrink-0 place-items-center overflow-hidden rounded-xl border border-white/15 bg-white p-2">
-                      <img src={amc.icon} alt={`${amc.name} logo`} width="36" height="36" loading="lazy" className="h-full w-full object-contain" />
+                  <div key={`${set}-${amc.name}`} className="grid h-32 w-[330px] shrink-0 place-items-center rounded-xl border border-white/10 bg-white/[.025] px-4 transition hover:border-[#4ebe96]/40 hover:bg-[#4ebe96]/[.04]">
+                    <span
+                      role="img"
+                      aria-label={`${amc.name} logo`}
+                      className="h-24 w-[290px] shrink-0 rounded-xl border border-[#d0d0d0] bg-white bg-no-repeat"
+                      style={{
+                        backgroundImage: `url(${amc.sheet})`,
+                        backgroundPosition: `${amc.position}% center`,
+                        backgroundSize: "400% 100%",
+                      }}
+                    >
+                      <span className="sr-only">{amc.name}</span>
                     </span>
-                    <span className="text-sm font-medium leading-5 text-[#cccccc]">{amc.name}</span>
                   </div>
                 ))}
               </div>
@@ -309,12 +316,12 @@ export function ContentExpansion() {
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-10 lg:grid-cols-[.82fr_1.18fr]">
             <div>
-              <SectionLabel>MUTUAL FUNDS / GOAL-BASED ACCESS</SectionLabel>
+              <SectionLabel>HOW MUTUAL FUND INVESTING WORKS</SectionLabel>
               <h2 className="mt-5 text-5xl font-semibold leading-[.9] tracking-[-.09em] md:text-7xl">
-                Simple to start.<br /><span className="text-[#4ebe96]">Structured to last.</span>
+                Easy to begin.<br /><span className="text-[#4ebe96]">Simple to manage.</span>
               </h2>
               <p className="mt-6 max-w-md text-sm leading-7 text-[#868f97]">
-                Digital convenience matters, but so does human context. SYDY connects the investment route to the goal, risk profile and time horizon before selecting a scheme category.
+                We first understand your goal, time period and comfort with risk. Then we help you choose an appropriate mutual fund category.
               </p>
             </div>
             <div className="grid gap-3 sm:grid-cols-2">
@@ -333,8 +340,8 @@ export function ContentExpansion() {
           <div className="mt-16 rounded-2xl border border-white/10 bg-[#131313] p-6 md:p-8">
             <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
               <div>
-                <p className="text-[10px] tracking-[.15em] text-[#4ebe96]">FROM INTENT TO INVESTMENT</p>
-                <h3 className="mt-3 text-3xl font-semibold tracking-[-.07em]">A clear five-step journey.</h3>
+                <p className="text-[10px] tracking-[.15em] text-[#4ebe96]">GETTING STARTED</p>
+                <h3 className="mt-3 text-3xl font-semibold tracking-[-.07em]">Five simple steps.</h3>
               </div>
               <p className="max-w-sm text-xs leading-5 text-[#868f97]">Transactions remain investor-authorized. Market-linked returns are not guaranteed.</p>
             </div>
@@ -351,7 +358,7 @@ export function ContentExpansion() {
         </div>
       </section>
 
-      <section className="section-rule bg-[#0b0b0b] px-6 py-24 md:py-36">
+      <section className="hidden section-rule bg-[#0b0b0b] px-6 py-24 md:py-36">
         <div className="mx-auto max-w-6xl">
           <div className="max-w-4xl">
             <SectionLabel>04 / WEALTH ACROSS A LIFETIME</SectionLabel>
@@ -372,7 +379,7 @@ export function ContentExpansion() {
         </div>
       </section>
 
-      <section id="approach" className="section-rule bg-[#131313] px-6 py-24 md:py-36">
+      <section id="approach" className="hidden section-rule bg-[#131313] px-6 py-24 md:py-36">
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-10 lg:grid-cols-[.8fr_1.2fr]">
             <div className="lg:sticky lg:top-28 lg:self-start">
@@ -404,13 +411,13 @@ export function ContentExpansion() {
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-8 lg:grid-cols-[1fr_.65fr] lg:items-end">
             <div>
-              <SectionLabel>06 / SYSTEMATIC RESEARCH · INDIA</SectionLabel>
+              <SectionLabel>OPTIONAL ALGO STRATEGIES · INDIA</SectionLabel>
               <h2 className="mt-5 text-5xl font-semibold leading-[.9] tracking-[-.09em] md:text-7xl">
-                Rules before<br /><span className="text-[#4ebe96]">reactions.</span>
+                A rules-based way<br /><span className="text-[#4ebe96]">to invest.</span>
               </h2>
             </div>
             <p className="max-w-md text-sm leading-7 text-[#868f97]">
-              Quantitative strategies are one capability within the wider SYDY investment ecosystem. Each model is designed around a stated universe, repeatable rules, risk controls and disciplined execution.
+              For suitable investors, algorithmic strategies can follow predefined rules and risk limits. These examples are not live performance or recommendations.
             </p>
           </div>
 
@@ -455,9 +462,9 @@ export function ContentExpansion() {
         <div className="mx-auto max-w-6xl">
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <div>
-              <SectionLabel>07 / CLIENT PERSPECTIVES</SectionLabel>
+              <SectionLabel>WHAT CLIENTS VALUE</SectionLabel>
               <h2 className="mt-5 text-5xl font-semibold leading-[.9] tracking-[-.09em] md:text-7xl">
-                Clarity people<br />can <span className="text-[#d6fe51]">feel.</span>
+                Guidance that feels<br /><span className="text-[#d6fe51]">clear and personal.</span>
               </h2>
             </div>
             <p className="max-w-sm text-sm leading-6 text-[#868f97]">Sample positioning is shown for layout review. Publish only approved, authentic client statements.</p>
@@ -480,7 +487,7 @@ export function ContentExpansion() {
         </div>
       </section>
 
-      <section className="section-rule bg-[#0b0b0b] px-6 py-24 md:py-32">
+      <section className="hidden section-rule bg-[#0b0b0b] px-6 py-24 md:py-32">
         <div className="mx-auto grid max-w-6xl gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 md:grid-cols-3">
           {[
             [Eye, "Clarity before products", "Every recommendation should begin with an objective, not an inventory."],

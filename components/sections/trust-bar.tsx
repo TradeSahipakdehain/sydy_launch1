@@ -1,10 +1,10 @@
 import { Mail, MessageCircle, Phone } from "lucide-react";
 
 const trustMarks = [
-  { mark: "SEBI", icon: "/brand-icons/sebi.png", detail: "Indian securities regulator" },
-  { mark: "NSE", icon: "/brand-icons/nse.png", detail: "Market infrastructure" },
-  { mark: "BSE", icon: "/brand-icons/bse.svg", detail: "Market infrastructure" },
-  { mark: "AMFI", icon: "/brand-icons/amfi.png", detail: "Registered Mutual Fund Distributor", reference: "ARN-352412" },
+  { mark: "SEBI", icon: "/brand-icons/sebi-supplied.png" },
+  { mark: "NSE", icon: "/brand-icons/nse-supplied.png" },
+  { mark: "BSE", icon: "/brand-icons/bse-supplied.png" },
+  { mark: "AMFI", icon: "/brand-icons/amfi-supplied.png" },
 ];
 
 export function TrustBar() {
@@ -15,6 +15,7 @@ export function TrustBar() {
           <div>
             <p className="text-[10px] tracking-[.18em] text-[#4ebe96]">TRUSTED BY INVESTORS ACROSS INDIA</p>
             <p className="mt-2 text-sm text-[#cccccc]">Clear access, disciplined advice and transparent investor communication.</p>
+            <p className="mt-2 font-mono text-xs text-[#d6fe51]">AMFI Registered Mutual Fund Distributor · ARN-352412</p>
           </div>
           <div className="flex flex-wrap gap-x-5 gap-y-2 text-xs text-[#cccccc]">
             <a href="tel:+919066868949" className="inline-flex items-center gap-2 transition hover:text-white"><Phone size={14} className="text-[#4ebe96]" /> +91 90668 68949</a>
@@ -24,14 +25,10 @@ export function TrustBar() {
         </div>
         <div className="grid gap-px overflow-hidden rounded-xl border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
           {trustMarks.map((item) => (
-            <div key={item.mark} className="flex min-h-24 items-center gap-4 bg-[#0b0b0b] px-5 py-4">
-              <span className="grid h-14 min-w-20 place-items-center rounded-lg border border-white/15 bg-white p-2">
-                <img src={item.icon} alt={`${item.mark} logo`} width="64" height="40" loading="lazy" className="h-full w-full object-contain" />
+            <div key={item.mark} className="grid min-h-24 place-items-center bg-[#0b0b0b] p-4">
+              <span className="grid h-16 w-full max-w-32 place-items-center overflow-hidden rounded-lg border border-white/15 bg-white p-2">
+                <img src={item.icon} alt={`${item.mark} logo`} width="112" height="56" loading="lazy" className="h-full w-full object-contain" />
               </span>
-              <div>
-                <p className="text-xs leading-5 text-[#868f97]">{item.detail}</p>
-                {item.reference && <p className="mt-1 font-mono text-xs font-semibold text-[#d6fe51]">{item.reference}</p>}
-              </div>
             </div>
           ))}
         </div>
