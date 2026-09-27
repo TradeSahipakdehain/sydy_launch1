@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, ArrowUpRight, ShieldCheck } from "lucide-react";
 import { strategies } from "@/components/sections/content-expansion";
+import { BrandMark } from "@/components/brand-mark";
 
 export const metadata: Metadata = {
   title: "Algo Strategies for Indian Markets | SYDY Capital",
@@ -34,7 +35,7 @@ export default function AlgoPage() {
   return (
     <main className="min-h-screen bg-[#0b0b0b] text-white">
       <header className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-7">
-        <Link href="/" className="text-sm font-semibold tracking-[.12em]">SYDY <span className="font-normal text-[#868f97]">CAPITAL</span></Link>
+        <Link href="/" aria-label="SYDY Capital home" className="inline-flex items-center"><BrandMark className="w-24" /></Link>
         <Link href="/" className="inline-flex items-center gap-2 text-xs text-[#868f97] transition hover:text-white"><ArrowLeft size={15} /> Home</Link>
       </header>
 

@@ -32,6 +32,7 @@ import { ContactSection } from "@/components/sections/contact-section";
 import { TrustBar } from "@/components/sections/trust-bar";
 import { InvestorEssentials } from "@/components/sections/investor-essentials";
 import { SiteFooter } from "@/components/site-footer";
+import { BrandMark } from "@/components/brand-mark";
 import Link from "next/link";
 
 const products = [
@@ -115,8 +116,8 @@ function CapitalHero() {
   const sculptureRotate = useTransform(scrollYProgress, [0, 1], [0, 270]);
   const sculptureOpacity = useTransform(
     scrollYProgress,
-    [0, 0.62, 0.85],
-    [1, 1, 0],
+    [0, 0.2, 0.42, 0.62, 0.85],
+    [0, 0, 1, 1, 0],
   );
   const dashboardY = useTransform(scrollYProgress, [0.42, 0.8], [120, 0]);
   const dashboardOpacity = useTransform(scrollYProgress, [0.42, 0.72], [0, 1]);
@@ -431,12 +432,10 @@ export default function Home() {
       <header className="absolute inset-x-0 top-0 z-20 mx-auto flex max-w-7xl items-center justify-between px-6 py-6">
         <Link
           href="/"
-          className="flex items-center gap-2 text-sm font-semibold tracking-[.12em]"
+          aria-label="SYDY Capital home"
+          className="flex items-center"
         >
-          <span className="grid size-8 place-items-center rounded-full border border-[#4ebe96] font-serif text-lg text-[#4ebe96]">
-            S
-          </span>
-          SYDY <span className="font-normal text-[#868f97]">CAPITAL</span>
+          <BrandMark className="w-[92px] md:w-[112px]" />
         </Link>
         <nav className="hidden items-center gap-6 text-xs text-[#868f97] md:flex">
           <a href="#goals" className="hover:text-white">

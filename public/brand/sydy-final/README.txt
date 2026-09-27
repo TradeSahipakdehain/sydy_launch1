@@ -1,0 +1,2 @@
+SYDY CAPITAL — approved interlocking monogram
+Transparent SVGs use vector paths and strokes with no embedded bitmap or font dependency. The D and final Y share one fused shape, matching the approved artwork. Black is for light backgrounds; white is for dark backgrounds. Logo includes the SYDY CAPITAL caption; mark-only files contain the symbol. PNGs are transparent 1440px exports. reference-final.png retains the supplied approval image.

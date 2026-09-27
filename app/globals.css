@@ -9,8 +9,9 @@
 .chart-line { stroke-dasharray: 700; stroke-dashoffset: 700; animation: draw 1.8s ease forwards; } @keyframes draw { to { stroke-dashoffset: 0; } }
 .section-rule { border-top: 1px solid rgba(255,255,255,.12); }
 
+
 @keyframes amc-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 .amc-marquee-track { animation: amc-marquee 34s linear infinite; will-change: transform; }
 .amc-marquee:hover .amc-marquee-track { animation-play-state: paused; }
 
-@media (prefers-reduced-motion: reduce){ .sculpture-stage{transform:translate(-50%,-50%) !important;opacity:1 !important}.hero-copy{transform:none !important;opacity:1 !important}.dashboard-reveal{transform:translateX(-50%) !important;opacity:1 !important}.chart-line{animation:none;stroke-dashoffset:0}.amc-marquee{overflow-x:auto}.amc-marquee-track{animation:none;transform:none}.amc-marquee-track>div[aria-hidden="true"]{display:none} }
+@media (prefers-reduced-motion: reduce){ .sculpture-stage{display:none}.hero-copy{transform:none !important;opacity:1 !important}.dashboard-reveal{transform:translateX(-50%) !important;opacity:1 !important}.chart-line{animation:none;stroke-dashoffset:0}.amc-marquee{overflow-x:auto}.amc-marquee-track{animation:none;transform:none}.amc-marquee-track>div[aria-hidden="true"]{display:none} }

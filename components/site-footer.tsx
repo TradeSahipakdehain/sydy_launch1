@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { BrandMark } from "@/components/brand-mark";
 
 const footerGroups = [
   {
@@ -38,9 +39,8 @@ export function SiteFooter() {
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-12 lg:grid-cols-[1.2fr_1.8fr]">
           <div>
-            <Link href="/" className="inline-flex items-center gap-2 text-sm font-semibold tracking-[.12em]">
-              <span className="grid size-9 place-items-center rounded-full border border-[#4ebe96] font-serif text-lg text-[#4ebe96]">S</span>
-              SYDY <span className="font-normal text-[#868f97]">CAPITAL</span>
+            <Link href="/" aria-label="SYDY Capital home" className="inline-flex items-center">
+              <BrandMark className="w-32" />
             </Link>
             <p className="mt-6 max-w-sm text-2xl leading-8 tracking-[-.045em] text-[#cccccc]">Prosperity through Vision.</p>
             <p className="mt-4 max-w-sm text-sm leading-6 text-[#868f97]">Simple mutual fund investing and goal-based financial planning for individuals and families.</p>

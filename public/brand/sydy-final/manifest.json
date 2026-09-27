@@ -1,0 +1,14 @@
+{
+  "source": "User-approved codex-clipboard-1f87de96-5db5-41ee-a323-18a44a06d8ed.png",
+  "method": "SVG path reconstruction",
+  "generator": "scripts/build-final-logo.cjs",
+  "variants": [
+    "black",
+    "white"
+  ],
+  "formats": [
+    "svg",
+    "png"
+  ],
+  "finalDY": "interlocked, shared silhouette"
+}
