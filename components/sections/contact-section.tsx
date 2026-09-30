@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useMemo, useState } from "react";
+import Image from "next/image";
 import { ArrowUpRight, CheckCircle2, Clock3, Mail, MessageCircle, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -66,6 +67,9 @@ export function ContactSection() {
           <p className="mt-7 max-w-md text-base leading-7 text-[#868f97]">
             Whether you are starting your first SIP or planning for retirement, education or another goal, begin with a simple conversation.
           </p>
+          <div className="relative mt-8 min-h-[250px] overflow-hidden rounded-2xl border border-white/10 bg-[radial-gradient(circle_at_70%_55%,rgba(214,254,81,.12),transparent_48%)] md:min-h-[310px]">
+            <Image src="/visuals/secure-investing.webp" alt="Secure mobile investing experience with portfolio tracking" width={1400} height={933} className="absolute inset-0 size-full object-contain object-center p-2" sizes="(max-width: 1024px) 100vw, 42vw" />
+          </div>
           <div className="mt-10 grid gap-3">
             <div className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/[.025] p-4">
               <MessageCircle className="mt-0.5 size-5 text-[#4ebe96]" />

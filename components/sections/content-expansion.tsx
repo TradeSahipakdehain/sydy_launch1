@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   ArrowDown,
   ArrowUpRight,
@@ -281,6 +282,11 @@ export function ContentExpansion() {
               ))}
             </div>
           </div>
+
+          <figure className="mt-12 overflow-hidden rounded-3xl border border-white/10 bg-[radial-gradient(circle_at_65%_50%,rgba(71,159,250,.14),transparent_55%)] p-4 md:p-8">
+            <Image src="/visuals/guided-planning.webp" alt="Advisor guiding a family through goal setting, risk planning, allocation and portfolio review" width={1400} height={933} className="mx-auto max-h-[560px] w-full object-contain" sizes="(max-width: 1200px) 100vw, 1152px" />
+            <figcaption className="mt-3 text-center text-[10px] uppercase tracking-[.16em] text-[#69727a]">A guided journey from defining the goal to reviewing the plan</figcaption>
+          </figure>
 
           <div className="mt-16 rounded-2xl border border-white/10 bg-[#131313] p-6 md:p-8">
             <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">

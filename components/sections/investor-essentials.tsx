@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Baby, ChevronDown, GraduationCap, Heart, Home, Plane, ShieldCheck, TrendingUp, Umbrella } from "lucide-react";
 import { Card } from "@/components/ui/card";
@@ -121,9 +122,16 @@ export function InvestorEssentials() {
     <>
       <section id="goals" className="section-rule bg-[#131313] px-6 py-24 md:py-32">
         <div className="mx-auto max-w-6xl">
-          <p className="text-[10px] tracking-[.18em] text-[#4ebe96]">PLAN FOR WHAT MATTERS</p>
-          <h2 className="mt-4 text-5xl font-semibold leading-[.9] tracking-[-.08em] md:text-7xl">Goal-based investing,<br /><span className="text-[#d6fe51]">made simple.</span></h2>
-          <p className="mt-6 max-w-xl text-base leading-7 text-[#868f97]">Tell us what you are investing for and when you need the money. We help connect the goal to a suitable investment plan.</p>
+          <div className="grid gap-10 lg:grid-cols-[1fr_.78fr] lg:items-center">
+            <div>
+              <p className="text-[10px] tracking-[.18em] text-[#4ebe96]">PLAN FOR WHAT MATTERS</p>
+              <h2 className="mt-4 text-5xl font-semibold leading-[.9] tracking-[-.08em] md:text-7xl">Goal-based investing,<br /><span className="text-[#d6fe51]">made simple.</span></h2>
+              <p className="mt-6 max-w-xl text-base leading-7 text-[#868f97]">Tell us what you are investing for and when you need the money. We help connect the goal to a suitable investment plan.</p>
+            </div>
+            <div className="relative min-h-[320px] overflow-hidden rounded-3xl border border-white/10 bg-[radial-gradient(circle_at_65%_45%,rgba(71,159,250,.16),transparent_55%)] md:min-h-[420px]">
+              <Image src="/visuals/goal-progression.webp" alt="Investor progressing step by step toward a financial goal" width={1024} height={1024} className="absolute inset-0 size-full object-contain p-3" sizes="(max-width: 1024px) 100vw, 42vw" />
+            </div>
+          </div>
           <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {goals.map(({ title, copy, icon: Icon }) => <article key={title} className="rounded-2xl border border-white/10 bg-[#0b0b0b] p-5"><Icon className="size-6 text-[#4ebe96]" /><h3 className="mt-8 text-xl font-semibold tracking-[-.05em]">{title}</h3><p className="mt-3 text-sm leading-6 text-[#868f97]">{copy}</p></article>)}
           </div>
@@ -132,8 +140,17 @@ export function InvestorEssentials() {
 
       <section id="calculators" className="section-rule bg-[#0b0b0b] px-6 py-24 md:py-32">
         <div className="mx-auto max-w-6xl">
-          <p className="text-[10px] tracking-[.18em] text-[#479ffa]">INVESTMENT CALCULATORS</p>
-          <h2 className="mt-4 text-5xl font-semibold tracking-[-.08em] md:text-7xl">Turn a goal into<br />a monthly number.</h2>
+          <div className="grid gap-10 lg:grid-cols-[1fr_.6fr] lg:items-center">
+            <div>
+              <p className="text-[10px] tracking-[.18em] text-[#479ffa]">INVESTMENT CALCULATORS</p>
+              <h2 className="mt-4 text-5xl font-semibold tracking-[-.08em] md:text-7xl">Turn a goal into<br />a monthly number.</h2>
+              <p className="mt-6 max-w-lg text-sm leading-7 text-[#868f97]">Explore a simple illustration, adjust the assumptions and see how time and consistency can shape a financial goal.</p>
+            </div>
+            <div className="relative mx-auto h-[340px] w-full max-w-sm md:h-[430px]">
+              <div className="absolute inset-x-8 bottom-4 h-24 rounded-full bg-[#479ffa]/15 blur-3xl" />
+              <Image src="/visuals/portfolio-dashboard.webp" alt="Illustrative mobile portfolio dashboard" width={900} height={1350} className="relative size-full object-contain" sizes="(max-width: 1024px) 90vw, 32vw" />
+            </div>
+          </div>
           <Card className="mt-12 p-5 md:p-8">
             <Tabs defaultValue="sip">
               <TabsList className="h-auto flex-wrap justify-start gap-1">
