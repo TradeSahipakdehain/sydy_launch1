@@ -29,6 +29,7 @@ import {
 } from "@/components/ui/tooltip";
 import { ContentExpansion } from "@/components/sections/content-expansion";
 import { ContactSection } from "@/components/sections/contact-section";
+import { InvestorDisclosure } from "@/components/sections/investor-disclosure";
 import { TrustBar } from "@/components/sections/trust-bar";
 import { FaqSection, InvestorEssentials } from "@/components/sections/investor-essentials";
 import { AmcMarquee } from "@/components/sections/amc-marquee";
@@ -603,6 +604,7 @@ export default function Home() {
       </section>
       <FaqSection />
       <ContactSection />
+      <InvestorDisclosure />
       <section className="relative overflow-hidden px-6 py-28 text-center md:py-40">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_100%,rgba(71,159,250,.2),transparent_42%)]" />
         <div className="relative mx-auto max-w-3xl">
