@@ -1,0 +1,20 @@
+name: Credential checks
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  secrets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Test scanner
+        run: node scripts/check-secrets.cjs --self-test
+      - name: Scan tracked source
+        run: node scripts/check-secrets.cjs
+      - name: Scan Git history
+        run: node scripts/check-secrets.cjs --history

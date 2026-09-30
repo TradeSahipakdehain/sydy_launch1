@@ -1,5 +1,7 @@
 # SYDY Capital
 
+Credential handling, automated checks and operational security limitations are documented in [SECURITY.md](SECURITY.md). Never put secrets in `NEXT_PUBLIC_*` values; they are visible to visitors.
+
 Terminal-led investment intelligence experience built with Next.js App Router, Tailwind CSS, Shadcn-style Radix primitives, Framer Motion, static export and Docker/Nginx.
 
 ## Run locally
