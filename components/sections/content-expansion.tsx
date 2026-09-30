@@ -150,7 +150,7 @@ const testimonials = [
   {
     quote: "The most valuable change was not another product. It was finally understanding why each allocation belonged in our family portfolio.",
     person: "Bakhshish Singh Sandhu",
-    context: "Retired Defence Personnel",
+    context: "Retired Defense Personnel",
   },
   {
     quote: "The reporting feels calm and precise. We can see risk, progress and the next decision without being overwhelmed by market noise.",
