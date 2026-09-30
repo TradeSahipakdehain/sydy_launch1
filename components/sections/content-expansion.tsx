@@ -18,18 +18,6 @@ import {
   Users,
 } from "lucide-react";
 
-const leadingAmcs = [
-  { name: "Motilal Oswal Mutual Fund", sheet: "/amc-artwork/amc-row-primary.png", position: 0 },
-  { name: "Mirae Asset Mutual Fund", sheet: "/amc-artwork/amc-row-primary.png", position: 33.333 },
-  { name: "SBI Mutual Fund", sheet: "/amc-artwork/amc-row-primary.png", position: 66.667 },
-  { name: "Aditya Birla Sun Life Mutual Fund", sheet: "/amc-artwork/amc-row-primary.png", position: 100 },
-  { name: "Axis Mutual Fund", sheet: "/amc-artwork/amc-row-axis.png", position: 100 },
-  { name: "Bandhan Mutual Fund", sheet: "/amc-artwork/amc-row-alternates.png", position: 0 },
-  { name: "DSP Mutual Fund", sheet: "/amc-artwork/amc-row-alternates.png", position: 33.333 },
-  { name: "Franklin Templeton Investments", sheet: "/amc-artwork/amc-row-alternates.png", position: 66.667 },
-  { name: "Edelweiss Mutual Fund", sheet: "/amc-artwork/amc-row-alternates.png", position: 100 },
-];
-
 const pillars = [
   {
     icon: Compass,
@@ -156,18 +144,18 @@ export const strategies = [
 const testimonials = [
   {
     quote: "SYDY helped us move from a collection of investments to a portfolio with a clear purpose, structure and review process.",
-    person: "Entrepreneur",
-    context: "Mumbai · Sample testimonial",
+    person: "Suryakant Hanwate",
+    context: "Senior Manager · Mumbai Metro",
   },
   {
     quote: "The most valuable change was not another product. It was finally understanding why each allocation belonged in our family portfolio.",
-    person: "Family investor",
-    context: "Bengaluru · Sample testimonial",
+    person: "Bakhshish Singh Sandhu",
+    context: "Retired Defence Personnel",
   },
   {
     quote: "The reporting feels calm and precise. We can see risk, progress and the next decision without being overwhelmed by market noise.",
-    person: "Senior professional",
-    context: "Delhi NCR · Sample testimonial",
+    person: "Akshay Miglani",
+    context: "Entrepreneur",
   },
 ];
 
@@ -266,49 +254,6 @@ export function ContentExpansion() {
               </article>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section className="section-rule overflow-hidden bg-[#131313] py-20">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
-            <div>
-              <SectionLabel>OUR MUTUAL FUND PARTNERS</SectionLabel>
-              <h2 className="mt-4 text-3xl font-semibold tracking-[-.07em] md:text-5xl">
-                Access leading mutual fund companies.
-              </h2>
-            </div>
-            <p className="max-w-md text-xs leading-5 text-[#868f97]">
-              Compare suitable schemes across investment styles and goals in one place.
-            </p>
-          </div>
-        </div>
-        <div className="amc-marquee mt-10 border-y border-white/10 bg-[#0b0b0b] py-4" aria-label="Selected leading Indian mutual fund asset management companies">
-          <div className="amc-marquee-track flex w-max">
-            {[0, 1].map((set) => (
-              <div key={set} className="flex shrink-0 gap-3 pr-3" aria-hidden={set === 1}>
-                {leadingAmcs.map((amc) => (
-                  <div key={`${set}-${amc.name}`} className="grid h-32 w-[330px] shrink-0 place-items-center rounded-xl border border-white/10 bg-white/[.025] px-4 transition hover:border-[#4ebe96]/40 hover:bg-[#4ebe96]/[.04]">
-                    <span
-                      role="img"
-                      aria-label={`${amc.name} logo`}
-                      className="h-24 w-[290px] shrink-0 rounded-xl border border-[#d0d0d0] bg-white bg-no-repeat"
-                      style={{
-                        backgroundImage: `url(${amc.sheet})`,
-                        backgroundPosition: `${amc.position}% center`,
-                        backgroundSize: "400% 100%",
-                      }}
-                    >
-                      <span className="sr-only">{amc.name}</span>
-                    </span>
-                  </div>
-                ))}
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="mx-auto mt-4 max-w-6xl px-6">
-          <p className="text-[10px] leading-4 text-[#69727a]">AMC names are shown for platform-access context. Availability and distributor relationships are subject to verification; names and marks belong to their respective owners and do not imply endorsement.</p>
         </div>
       </section>
 
@@ -467,7 +412,7 @@ export function ContentExpansion() {
                 Guidance that feels<br /><span className="text-[#d6fe51]">clear and personal.</span>
               </h2>
             </div>
-            <p className="max-w-sm text-sm leading-6 text-[#868f97]">Sample positioning is shown for layout review. Publish only approved, authentic client statements.</p>
+            <p className="max-w-sm text-sm leading-6 text-[#868f97]">Experiences shared by investors who value clear explanations, goal-led planning and disciplined reviews.</p>
           </div>
           <div className="mt-14 grid gap-3 lg:grid-cols-3">
             {testimonials.map(({ quote, person, context }, index) => (

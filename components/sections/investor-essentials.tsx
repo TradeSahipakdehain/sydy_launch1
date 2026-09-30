@@ -158,6 +158,12 @@ export function InvestorEssentials() {
         </div>
       </section>
 
+    </>
+  );
+}
+
+export function FaqSection() {
+  return (
       <section id="faq" className="section-rule bg-[#0b0b0b] px-6 py-24 md:py-32">
         <div className="mx-auto max-w-6xl">
           <div className="text-center"><p className="text-[10px] tracking-[.18em] text-[#4ebe96]">COMMON QUESTIONS</p><h2 className="mt-4 text-5xl font-semibold tracking-[-.08em] md:text-7xl">Frequently asked questions.</h2></div>
@@ -166,6 +172,5 @@ export function InvestorEssentials() {
           </div>
         </div>
       </section>
-    </>
   );
 }

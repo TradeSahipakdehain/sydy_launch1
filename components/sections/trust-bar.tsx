@@ -1,10 +1,10 @@
 import { Mail, MessageCircle, Phone } from "lucide-react";
 
 const trustMarks = [
-  { mark: "SEBI", icon: "/brand-icons/sebi-supplied.png" },
-  { mark: "NSE", icon: "/brand-icons/nse-supplied.png" },
-  { mark: "BSE", icon: "/brand-icons/bse-supplied.png" },
-  { mark: "AMFI", icon: "/brand-icons/amfi-supplied.png" },
+  { mark: "SEBI", icon: "/brand-icons/sebi-official.png", imageClass: "max-h-20 max-w-20" },
+  { mark: "NSE", icon: "/brand-icons/nse-official.png", imageClass: "max-h-16 max-w-[210px]" },
+  { mark: "BSE", icon: "/brand-icons/bse-official.png", imageClass: "max-h-20 max-w-[190px]" },
+  { mark: "AMFI", icon: "/brand-icons/amfi-official.png", imageClass: "max-h-20 max-w-[180px]" },
 ];
 
 export function TrustBar() {
@@ -25,9 +25,9 @@ export function TrustBar() {
         </div>
         <div className="grid gap-px overflow-hidden rounded-xl border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
           {trustMarks.map((item) => (
-            <div key={item.mark} className="grid min-h-24 place-items-center bg-[#0b0b0b] p-4">
-              <span className="grid h-16 w-full max-w-32 place-items-center overflow-hidden rounded-lg border border-white/15 bg-white p-2">
-                <img src={item.icon} alt={`${item.mark} logo`} width="112" height="56" loading="lazy" className="h-full w-full object-contain" />
+            <div key={item.mark} className="grid min-h-32 place-items-center bg-[#0b0b0b] p-4">
+              <span className="flex h-24 w-full items-center justify-center overflow-hidden rounded-xl border border-white/15 bg-white p-3">
+                <img src={item.icon} alt={`${item.mark} logo`} loading="lazy" className={`h-auto w-auto object-contain ${item.imageClass}`} />
               </span>
             </div>
           ))}

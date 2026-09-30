@@ -30,7 +30,8 @@ import {
 import { ContentExpansion } from "@/components/sections/content-expansion";
 import { ContactSection } from "@/components/sections/contact-section";
 import { TrustBar } from "@/components/sections/trust-bar";
-import { InvestorEssentials } from "@/components/sections/investor-essentials";
+import { FaqSection, InvestorEssentials } from "@/components/sections/investor-essentials";
+import { AmcMarquee } from "@/components/sections/amc-marquee";
 import { SiteFooter } from "@/components/site-footer";
 import { BrandMark } from "@/components/brand-mark";
 import Link from "next/link";
@@ -463,6 +464,7 @@ export default function Home() {
       </header>
       <CapitalHero />
       <TrustBar />
+      <AmcMarquee />
       <section
         id="solutions"
         className="section-rule bg-[#0b0b0b] px-6 py-24 md:py-36"
@@ -599,6 +601,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <FaqSection />
       <ContactSection />
       <section className="relative overflow-hidden px-6 py-28 text-center md:py-40">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_100%,rgba(71,159,250,.2),transparent_42%)]" />
