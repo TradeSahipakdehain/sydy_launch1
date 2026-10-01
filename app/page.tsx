@@ -635,7 +635,7 @@ export default function Home() {
                 "@type": "Organization",
                 name: "CapitalVerve Analytics",
                 alternateName: "SYDY CAPITAL",
-                url: "https://sydycapital.com",
+                url: "https://www.sydycapital.com",
               },
               {
                 "@type": "FinancialProduct",

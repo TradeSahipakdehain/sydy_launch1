@@ -4,7 +4,7 @@ export const dynamic = "force-static";
 import { articles } from "@/lib/articles";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const root = "https://sydycapital.com";
+  const root = "https://www.sydycapital.com";
   return [
     { url: root, lastModified: new Date() },
     { url: `${root}/blog`, lastModified: new Date() },

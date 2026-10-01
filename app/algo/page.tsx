@@ -7,7 +7,7 @@ import { BrandMark } from "@/components/brand-mark";
 export const metadata: Metadata = {
   title: "Algo Strategies for Indian Markets | SYDY Capital",
   description: "Explore SYDY Capital's rules-based Indian market strategy concepts, how they work, and the risks to consider.",
-  alternates: { canonical: "https://sydycapital.com/algo" },
+  alternates: { canonical: "https://www.sydycapital.com/algo" },
 };
 
 const strategyDetails = [
